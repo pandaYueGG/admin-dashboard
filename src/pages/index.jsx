@@ -1,4 +1,4 @@
-export { default as Home } from "./Home";
+export { default as Summary } from "./Summary";
 export { default as Kanban } from "./Kanban";
 export { default as Orders } from "./Orders";
 export { default as Employees } from "./Employees";
