@@ -98,10 +98,18 @@ const Summary = () => {
                   currentColor="green"
                   id="line-sparkline"
                   type="Line"
-                  height="80px"
+                  height="120px"
                   width="250px"
                   data={SparklineAreaData}
                   color="green"
+                />
+              </div>
+              <div className="mt-10">
+                <Button
+                  color="white"
+                  bgColor="green"
+                  text="Download Report"
+                  borderRadius="10px"
                 />
               </div>
             </div>
