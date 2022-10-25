@@ -98,7 +98,7 @@ const Summary = () => {
                   currentColor="green"
                   id="line-sparkline"
                   type="Line"
-                  height="120px"
+                  height="80px"
                   width="250px"
                   data={SparklineAreaData}
                   color="green"
@@ -112,6 +112,9 @@ const Summary = () => {
                   borderRadius="10px"
                 />
               </div>
+            </div>
+            <div>
+              <Stacked width="320px" height="410px" />
             </div>
           </div>
         </div>
