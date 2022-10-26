@@ -5,7 +5,6 @@ import {
   ColumnsDirective,
   ColumnDirective,
   Search,
-  Edit,
   Page,
   Sort,
   Toolbar,
@@ -34,7 +33,7 @@ const Employees = () => {
             <ColumnDirective key={idx} {...item} />
           ))}
         </ColumnsDirective>
-        <Inject services={[Search, Page, Toolbar, Sort, Edit]} />
+        <Inject services={[Search, Page, Toolbar, Sort]} />
       </GridComponent>
     </div>
   );
