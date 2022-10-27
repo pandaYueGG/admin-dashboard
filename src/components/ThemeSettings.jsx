@@ -5,8 +5,18 @@ import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
+import { Item } from "@syncfusion/ej2/navigations";
 
 const ThemeSettings = () => {
+  const {
+    setColor,
+    setMode,
+    currentMode,
+    currentColor,
+    showThemeSettings,
+    setShowThemeSettings,
+  } = useStateContext();
+
   return (
     <div className="nav-item bg-half-transparent w-screen fixed top-0 right-0">
       <div className="float-right h-screen dark:text-gray-200 bg-white dark:bg-[#5a5e67] w-400">
@@ -15,7 +25,7 @@ const ThemeSettings = () => {
           <button
             className="text-2xl p-3 hover:drop-shadow hover:bg-lgiht-gray"
             type="button"
-            onClick={() => console.log("setting btn clicked")}
+            onClick={() => setShowThemeSettings(false)}
             style={{ color: "green", borderRadius: "50%" }}
           >
             <AiOutlineClose />
@@ -30,12 +40,53 @@ const ThemeSettings = () => {
               name="theme"
               value="Light"
               className="cursor-pointer"
-              onChange={() => console.log("set mode btn clicked")}
-              checked={true}
+              onChange={setMode}
+              checked={currentMode === "Light"}
             />
             <label htmlFor="light" className="ml-2 text-md cursor-pointer">
               Light
             </label>
+          </div>
+          <div className="mt-4">
+            <input
+              type="radio"
+              id="dark"
+              name="theme"
+              value="Dark"
+              className="cursor-pointer"
+              onChange={setMode}
+              checked={currentMode === "Dark"}
+            />
+            <label htmlFor="dark" className="ml-2 text-md cursor-pointer">
+              Dark
+            </label>
+          </div>
+        </div>
+        <div className="p-4 border-t-1 border-col ml-4">
+          <p className="font-medium text-lg">Theme Colors</p>
+          <div className="flex gap-3">
+            {themeColors.map((item, idx) => (
+              <TooltipComponent
+                key={idx}
+                content={item.name}
+                position="TopCenter"
+              >
+                <div className="relateive mt-2 cursor-pointer flex gap-8 items-center">
+                  <button
+                    type="button"
+                    className="h-12 w-12 rounded-full cursor-pointer"
+                    style={{ backgroundColor: item.color }}
+                    onClick={() => setColor(item.color)}
+                  >
+                    <BsCheck
+                      className={`ml-2 text-xl text-white ${
+                        item.color === currentColor ? "block" : "hidden"
+                      }`}
+                    />
+                  </button>
+                </div>
+              </TooltipComponent>
+            ))}
           </div>
         </div>
       </div>

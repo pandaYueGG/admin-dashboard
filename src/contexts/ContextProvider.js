@@ -14,6 +14,24 @@ export const ContextProvider = ({ children }) => {
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
 
+  // theme setting states
+  const [currentColor, setCurrentColor] = useState("#03C9D7");
+  const [currentMode, setCurrentMode] = useState("Light");
+  const [showThemeSettings, setShowThemeSettings] = useState(true);
+
+  // theme mode setters
+  const setMode = (e) => {
+    console.log("mode target", e.target);
+    setCurrentMode(e.target.value);
+    localStorage.setItem("themeMode", e.target.val);
+    setShowThemeSettings(false);
+  };
+  const setColor = (color) => {
+    setCurrentColor(color);
+    localStorage.setItem("colorMode", color);
+    setShowThemeSettings(false);
+  };
+
   // click navbar icon
   const handleClick = (type) => {
     setIsClicked({ ...initialState, [type]: true });
@@ -29,6 +47,12 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         screenSize,
         setScreenSize,
+        currentColor,
+        currentMode,
+        setColor,
+        setMode,
+        showThemeSettings,
+        setShowThemeSettings,
       }}
     >
       {children}
