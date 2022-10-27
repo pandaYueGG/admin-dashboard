@@ -8,14 +8,8 @@ import { useStateContext } from "../contexts/ContextProvider";
 import { Item } from "@syncfusion/ej2/navigations";
 
 const ThemeSettings = () => {
-  const {
-    setColor,
-    setMode,
-    currentMode,
-    currentColor,
-    showThemeSettings,
-    setShowThemeSettings,
-  } = useStateContext();
+  const { setColor, setMode, currentMode, currentColor, setShowThemeSettings } =
+    useStateContext();
 
   return (
     <div className="nav-item bg-half-transparent w-screen fixed top-0 right-0">
@@ -76,7 +70,10 @@ const ThemeSettings = () => {
                     type="button"
                     className="h-12 w-12 rounded-full cursor-pointer"
                     style={{ backgroundColor: item.color }}
-                    onClick={() => setColor(item.color)}
+                    onClick={() => {
+                      console.log("color: ", item.color);
+                      setColor(item.color);
+                    }}
                   >
                     <BsCheck
                       className={`ml-2 text-xl text-white ${
