@@ -63,6 +63,7 @@ function App() {
             </div>
 
             <div>
+              <ThemeSettings />
               <Routes>
                 {/* dashboard - homepage */}
                 <Route path="/" element={<Summary />} />
