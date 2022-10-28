@@ -71,7 +71,8 @@ const ThemeSettings = () => {
                     className="h-12 w-12 rounded-full cursor-pointer"
                     style={{ backgroundColor: item.color }}
                     onClick={() => {
-                      console.log("color: ", item.color);
+                      // don't pass item into onClick function
+                      // console.log("color: ", item.color);
                       setColor(item.color);
                     }}
                   >
