@@ -15,7 +15,6 @@ import {
 } from "../../data/dummy";
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Header } from "../../components";
-import { Item } from "@syncfusion/ej2/splitbuttons";
 
 const Area = () => {
   const { currentMode, currentColor } = useStateContext();

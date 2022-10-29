@@ -1,11 +1,9 @@
 import React from "react";
-import { MdOutlineCancel } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 import { BsCheck } from "react-icons/bs";
 import { TooltipComponent } from "@syncfusion/ej2-react-popups";
 import { themeColors } from "../data/dummy";
 import { useStateContext } from "../contexts/ContextProvider";
-import { Item } from "@syncfusion/ej2/navigations";
 
 const ThemeSettings = () => {
   const { setColor, setMode, currentMode, currentColor, setShowThemeSettings } =
