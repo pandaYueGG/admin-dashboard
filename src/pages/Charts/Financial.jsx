@@ -19,22 +19,55 @@ import {
 import { useStateContext } from "../../contexts/ContextProvider";
 import { Header } from "../../components";
 
-const startDate = new Date("2000, 1, 1");
+const startDate = new Date("2017, 1, 1");
 
-const valueFilter = (value) => {
+function valueFilter(value) {
   if (value.x >= startDate) {
+    // eslint-disable-next-line no-sequences
     return value.x, value.high, value.low;
   }
-};
-
+}
 const filteredValues = financialChartData.filter(valueFilter);
+console.log(filteredValues);
 
 const Financial = () => {
-  const { currentColor, currentMode } = useStateContext();
+  const { currentMode } = useStateContext();
   return (
-    <div>
+    <div className="m-4 md:m-10 mt-24 p-10 bg-white dark:bg-secondary-dark-bg rounded:2xl">
       <Header category="Financial" title="Financial Summary" />
-      <div className="w-full"></div>
+      <div className="w-full">
+        <ChartComponent
+          id="charts"
+          background={currentMode === "Dark" ? "#303236" : "#fff"}
+          primaryXAxis={FinancialPrimaryXAxis}
+          primaryYAxis={FinancialPrimaryYAxis}
+          chartArea={{ border: { width: 0 } }}
+          tooltip={{ enable: true, shared: true }}
+          crosshair={{ enable: true, lineType: "Vertical", line: { width: 0 } }}
+        >
+          <Inject
+            services={[
+              HiloSeries,
+              Tooltip,
+              DateTime,
+              Logarithmic,
+              Crosshair,
+              Zoom,
+            ]}
+          />
+          <SeriesCollectionDirective>
+            <SeriesDirective
+              dataSource={filteredValues}
+              xName="x"
+              yName="low"
+              name="YHoppy"
+              type="Hilo"
+              low="low"
+              high="high"
+            />
+          </SeriesCollectionDirective>
+        </ChartComponent>
+      </div>
     </div>
   );
 };
