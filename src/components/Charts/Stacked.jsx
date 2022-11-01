@@ -18,10 +18,12 @@ import {
 import { useStateContext } from "../../contexts/ContextProvider";
 
 const Stacked = ({ height, width }) => {
+  const { currentMode } = useStateContext();
   return (
     <ChartComponent
       width={width}
       height={height}
+      background={currentMode === "Dark" ? "#303236" : "#fff"}
       id="charts"
       primaryXAxis={stackedPrimaryXAxis}
       primaryYAxis={stackedPrimaryYAxis}
