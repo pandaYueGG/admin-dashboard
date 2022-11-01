@@ -28,7 +28,6 @@ function valueFilter(value) {
   }
 }
 const filteredValues = financialChartData.filter(valueFilter);
-console.log(filteredValues);
 
 const Financial = () => {
   const { currentMode } = useStateContext();
